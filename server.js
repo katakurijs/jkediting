@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs').promises;
 require("dotenv").config();
+const session = require("express-session");
 const UAParser = require("ua-parser-js");
 
 const app = express();
