@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote - Kxngsleywatt Viewers</title>
+    <link rel="stylesheet" href="/css/vote.css">
+</head>
+<body>
+    <div class="grain-overlay"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='/'">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path d="M16 2L20 12H30L22 18L26 28L16 22L6 28L10 18L2 12H12L16 2Z" fill="url(#gradient)" stroke="#fff" stroke-width="1.5"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="2" y1="2" x2="30" y2="28">
+                                <stop offset="0%" stop-color="#667eea"/>
+                                <stop offset="100%" stop-color="#764ba2"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Voter</span>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M17.5 17.5L13.875 13.875M15.8333 9.16667C15.8333 12.8486 12.8486 15.8333 9.16667 15.8333C5.48477 15.8333 2.5 12.8486 2.5 9.16667C2.5 5.48477 5.48477 2.5 9.16667 2.5C12.8486 2.5 15.8333 5.48477 15.8333 9.16667Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button class="btn-secondary">Sign In</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="vote-container">
+        <!-- Voting Interface -->
+        <div class="voting-interface" id="votingInterface">
+            <div class="vote-header">
+                <div class="campaign-badge">
+                    <span class="badge-icon">🎯</span>
+                    <span>Live Campaign</span>
+                </div>
+                <h1 class="vote-title">Kxngsleywatt viewers.</h1>
+                <p class="vote-subtitle">Vote for the best viewers across different categories</p>
+                <div class="campaign-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span id="totalVotes">0</span> votes cast
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🔥</span>
+                        <span>Active now</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vote-progress">
+                <div class="progress-steps">
+                    <div class="step active" data-step="0">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Realest</div>
+                    </div>
+                    <div class="step" data-step="1">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Funniest</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Most Aura</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Smartest</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-number">5</div>
+                        <div class="step-label">Kindest</div>
+                    </div>
+                    <div class="step" data-step="5">
+                        <div class="step-number">6</div>
+                        <div class="step-label">Richest</div>
+                    </div>
+                    <div class="step" data-step="6">
+                        <div class="step-number">7</div>
+                        <div class="step-label">Best</div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+            </div>
+
+            <div class="vote-content" id="voteContent">
+                <!-- Category will be injected here -->
+            </div>
+        </div>
+
+        <!-- Review Screen -->
+        <div class="review-screen" id="reviewScreen" style="display: none;">
+            <div class="review-content">
+                <div class="review-icon">📝</div>
+                <h2>Review Your Votes</h2>
+                <p class="review-subtitle">Enter your name and submit your votes</p>
+                
+                <div class="name-input-section">
+                    <label for="voterName" class="input-label">Your Name</label>
+                    <input 
+                        type="text" 
+                        id="voterName" 
+                        class="name-input" 
+                        placeholder="Enter your name..."
+                        maxlength="30"
+                    >
+                </div>
+                
+                <div class="votes-summary" id="votesSummary">
+                    <!-- Votes will be listed here -->
+                </div>
+                
+                <div class="review-actions">
+                    <button class="btn-large btn-secondary" onclick="goBackToVoting()">
+                        ← Edit Votes
+                    </button>
+                    <button class="btn-large btn-primary" onclick="submitAllVotes()">
+                        Submit All Votes
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div class="success-screen" id="successScreen" style="display: none;">
+            <div class="success-content">
+                <div class="success-icon">✅</div>
+                <h2>Votes Registered Successfully!</h2>
+                <p>Thank you for participating! Your votes have been counted.</p>
+                
+                <div class="completion-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">Categories Voted</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalParticipants">0</div>
+                        <div class="stat-label">Total Participants</div>
+                    </div>
+                </div>
+                
+                <button class="btn-large btn-primary" onclick="voteAgain()">
+                    Vote Again
+                </button>
+                <button class="btn-large btn-secondary" onclick="window.location.href='/'">
+                    Back to Home
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/vote.js"></script>
+</body>
+</html>

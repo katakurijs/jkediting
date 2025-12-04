@@ -1,0 +1,23 @@
+{
+  "name": "voter-platform",
+  "version": "1.0.0",
+  "description": "Advanced voting platform for communities",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "voting",
+    "platform",
+    "community"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
